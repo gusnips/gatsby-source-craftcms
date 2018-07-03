@@ -29,6 +29,18 @@ exports.sourceNodes = async (
             return d;
           });
         }
+        if (data[k].hasOwnProperty("edges")) {
+          data[k] = data[k].edges.map(function (d) {
+            if (typeof d.node.id !== 'undefined') {
+              d.node.id = d.node.id.toString();
+            }
+            const node = { ...d.node };
+            if (typeof d.relatedEntries !== 'undefined') {
+              node.relatedEntries = d.relatedEntries
+            }
+            return node;
+          });
+        }
         return data[k];
       });
       return data;
