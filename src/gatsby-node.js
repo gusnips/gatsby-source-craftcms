@@ -30,7 +30,7 @@ exports.sourceNodes = async (
           });
         }
         if (data[k].hasOwnProperty("edges")) {
-          data[k] = data[k].edges.map(function (d) {
+          data[k] = data[k].edges.map(d => {
             if (typeof d.node.id !== 'undefined') {
               d.node.id = d.node.id.toString();
             }
