@@ -1,5 +1,5 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "name": "gatsby-source-craftcms",
   "description": "Gatsby source plugin for building websites using the CraftCMS as a data source.",
   "keywords": [
