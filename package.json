@@ -1,11 +1,12 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "gatsby-source-craftcms",
   "description": "Gatsby source plugin for building websites using the CraftCMS as a data source.",
   "keywords": [
     "data",
     "gatsby",
     "gatsby-plugin",
+    "gatsby-source",
     "craftcms",
     "graphql",
     "craftql",
