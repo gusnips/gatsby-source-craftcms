@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "gatsby-source-craftcms",
   "description": "Gatsby source plugin for building websites using the CraftCMS as a data source.",
   "keywords": [
@@ -9,6 +9,9 @@
     "craftcms",
     "graphql",
     "craftql",
+    "cms",
+    "headless",
+    "craft",
     "source"
   ],
   "homepage": "https://github.com/gusnips/gatsby-source-craftcms",

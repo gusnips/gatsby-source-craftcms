@@ -29,14 +29,14 @@ exports.sourceNodes = async (
             return d;
           });
         }
-        if (data[k].hasOwnProperty("edges")) {
+        if (Object.prototype.hasOwnProperty.call(data[k], 'edges')) {
           data[k] = data[k].edges.map(d => {
             if (typeof d.node.id !== 'undefined') {
               d.node.id = d.node.id.toString();
             }
-            const node = { ...d.node };
+            const node = {...d.node};
             if (typeof d.relatedEntries !== 'undefined') {
-              node.relatedEntries = d.relatedEntries
+              node.relatedEntries = d.relatedEntries;
             }
             return node;
           });
