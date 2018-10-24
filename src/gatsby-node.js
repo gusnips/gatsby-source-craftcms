@@ -46,7 +46,12 @@ exports.sourceNodes = async (
       return data
     }).catch(err => {
       const response = err.response
-      reporter.panic(`Status ${response.status}`, response.error)
+      if(response && response.status && response.error)
+        reporter.panic(`Status ${response.status}`, response.error)
+      else if(response && response.status && response.errors)
+        reporter.panic(`Status ${response.status}`, response.errors)
+      else 
+        reporter.panic(err)
     })
 
     // Keywords workaround
