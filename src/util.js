@@ -64,8 +64,6 @@ export const getCreateCraftNode = (createNode, reporter, key) => (queryResultNod
 }
 
 export const createNodes = (createNode, reporter) => (value, key) => {
-  // Console.log(key, value)
-  
   const createCraftNode = getCreateCraftNode(createNode, reporter, key)
   
   if(Array.isArray(value)) {
