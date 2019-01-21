@@ -6,18 +6,19 @@ Use https://www.gatsbyjs.org/packages/gatsby-source-graphql/ instead
   
   
   
+### About
 Source plugin for pulling data into [Gatsby](https://github.com/gatsbyjs) from a [CraftCMS](https://craftcms.com) endpoint  
 Based on [gatsby-source-graphcms](https://github.com/GraphCMS/gatsby-source-graphcms)  
 Tested in Gatsby v1 and v2
 
-## Install
+### Install
 
 1. `yarn add gatsby-source-craftcms` or `npm i gatsby-source-craftcms`
 1. Make sure plugin is referenced in your Gatsby config, as in the
    [example&nbsp;below](#usage)
 1. `gatsby develop`
 
-## Usage
+### Usage
 
 _In your gatsby config..._
 
@@ -98,7 +99,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
 ```
 
-## Plugin options
+### Plugin options
 
 |              |                                                          |
 | -----------: | :------------------------------------------------------- |
@@ -106,7 +107,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 |    **token** | The API access token. Optional if the endpoint is public |
 |    **query** | The GraphQL query to execute against the endpoint        |
 
-## How to query : GraphQL
+### How to query : GraphQL
 
 Let’s say you have a GraphQL type called `Categories`. You would query all artists
 like so:
@@ -157,7 +158,7 @@ query GetPost($slug: String!) {
 
 ```
 
-## Testing plugin contributions
+### Testing plugin contributions
 
 1. `cd` to the Gatsby install you want to test your changes to the plugin code
    with, or clone [@CraftCMS/gatsby-craftcms-example](https://github.com/gusnips/gatsby-craftcms-example)
@@ -175,4 +176,4 @@ query GetPost($slug: String!) {
    [example&nbsp;below](#usage)
 1. From there you can `cd ../.. && yarn && yarn develop` to test
 
-### Every time you rebuild the plugin, you must restart Gatsby’s development server to reflect the changes in your test environment.
+#### Every time you rebuild the plugin, you must restart Gatsby’s development server to reflect the changes in your test environment.
