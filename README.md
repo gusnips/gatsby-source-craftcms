@@ -1,5 +1,11 @@
 # gatsby-source-craftcms
 
+## deprecated
+Use https://www.gatsbyjs.org/packages/gatsby-source-graphql/ instead
+  
+  
+  
+  
 Source plugin for pulling data into [Gatsby](https://github.com/gatsbyjs) from a [CraftCMS](https://craftcms.com) endpoint  
 Based on [gatsby-source-graphcms](https://github.com/GraphCMS/gatsby-source-graphcms)  
 Tested in Gatsby v1 and v2
