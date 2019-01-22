@@ -31,35 +31,46 @@ export const assembleQueries = compose(
   path([`__type`, `possibleTypes`])
 );
 
-export const createNodes = (createNode, reporter) => (value, key) => {
-  // Console.log(key, value)
-  forEach(queryResultNode => {
-    const {id, ...fields} = queryResultNode;
-    const jsonNode = JSON.stringify(queryResultNode);
-    const gatsbyNode = {
-      id,
-      ...fields,
-      parent: `${SOURCE_NAME}_${key}`,
-      children: [],
-      internal: {
-        type: extractTypeName(key),
-        content: jsonNode,
-        contentDigest: crypto
-          .createHash(`md5`)
-          .update(jsonNode)
-          .digest(`hex`)
-      }
-    };
 
-    if (DEBUG_MODE) {
-      const jsonFields = JSON.stringify(fields);
-      const jsonGatsbyNode = JSON.stringify(gatsbyNode);
-      reporter.info(`  processing node: ${jsonNode}`);
-      reporter.info(`    node id ${id}`);
-      reporter.info(`    node fields: ${jsonFields}`);
-      reporter.info(`    gatsby node: ${jsonGatsbyNode}`);
+
+export const getCreateCraftNode = (createNode, reporter, key) => (queryResultNode) => {
+  const {id, ...fields} = queryResultNode;
+  const jsonNode = JSON.stringify(queryResultNode);
+  const gatsbyNode = {
+    id: id || key,
+    ...fields,
+    parent: `${SOURCE_NAME}_${key}`,
+    children: [],
+    internal: {
+      type: extractTypeName(key),
+      content: jsonNode,
+      contentDigest: crypto
+        .createHash(`md5`)
+        .update(jsonNode)
+        .digest(`hex`)
     }
+  };
+  if (DEBUG_MODE) {
+    const jsonFields = JSON.stringify(fields);
+    const jsonGatsbyNode = JSON.stringify(gatsbyNode);
+    reporter.info(`  processing node: ${jsonNode}`);
+    reporter.info(`    node id ${id}`);
+    reporter.info(`    node fields: ${jsonFields}`);
+    reporter.info(`    gatsby node: ${jsonGatsbyNode}`);
+  }
+  
+  createNode(gatsbyNode);
+  
+}
 
-    createNode(gatsbyNode);
-  }, value);
+export const createNodes = (createNode, reporter) => (value, key) => {
+  const createCraftNode = getCreateCraftNode(createNode, reporter, key)
+  
+  if(Array.isArray(value)) {
+    forEach(createCraftNode, value);
+  } else if(typeof value === 'object') {
+    createCraftNode(value)
+  }
+  
+  
 };
